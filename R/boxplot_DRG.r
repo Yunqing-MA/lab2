@@ -9,8 +9,6 @@
 #'
 # Define the function
 boxplot_DRG <- function(data = 'medicare') {
-    # Read data
-    DRG_data <- read.csv('DRG_data.csv')
 
     # Set x axis text
     distinct_def <- dplyr::distinct(DRG_data, DRG.Definition)

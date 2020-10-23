@@ -9,8 +9,6 @@
 #'
 # Define the function
 statistics_DRG_Med <- function(statistics = 'mean') {
-    # Read data
-    DRG_data <- read.csv('DRG_data.csv')
 
     # Select what statistics to calculate
     if (statistics == 'mean') {
