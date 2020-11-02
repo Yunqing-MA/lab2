@@ -8,21 +8,14 @@
 #' @examples statistics_DRG_Med(statistics = 'median')
 #'
 # Define the function
-statistics_DRG_Med <- function(statistics = 'mean') {
+statistics_DRG_Med <- function (func = mean) {
 
-    # Select what statistics to calculate
-    if (statistics == 'mean') {
-        mean <- mean(DRG_data$Average.Medicare.Payments)
-        return(mean)
-    }
-    # Select what statistics to calculate
-    else if (statistics == 'median') {
-        median <- median(DRG_data$Average.Medicare.Payments)
-        return(median)
-    }
-    # Select what statistics to calculate
-    else if (statistics == 'sd') {
-        sd <- sd(DRG_data$Average.Medicare.Payments)
-        return(sd)
-    }
+    # Group_by Definition
+    grouped_DRG <- dplyr::group_by(DRG_data, DRG.Definition)
+
+    # Calculate the grouped statistic
+    return_DRG <- dplyr::summarize(grouped_DRG, method = func)
+
+    return(return_DRG)
+
 }
